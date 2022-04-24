@@ -1,5 +1,5 @@
-Reference
-=========
+Ansible Developer References
+============================
 
 An non-official set of reference documentation for the Ansible module developer.
 
