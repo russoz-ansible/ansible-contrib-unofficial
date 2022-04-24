@@ -32,7 +32,13 @@ There is no embedded support for deprecating a default value in Ansible. This is
 ```python
 if module.params['param1'] is None:
     param1 = old_default
-    module.deprecate('The default value {0} is being deprecated and it will be replaced by {1} in community.general 8.0.0'.format(old_default, new_default), version='8.0.0', collection_name='community.general')
+    module.deprecate(
+        'The default value {0} is being deprecated and it will be replaced by {1} in community.general 8.0.0'.format(
+            old_default, new_default
+        ), 
+        version='8.0.0', 
+        collection_name='community.general'
+    )
 ```
 
 ## Deprecating a parameter choice value
@@ -42,7 +48,11 @@ Similarly to the deprecation of the default value above, there is no embedded me
 * Add a code:
 ```python
 if module.params['param1'] == deprecated_choice:
-    module.deprecate('The value {0} is being deprecated and will be removed in community.general 8.0.0'.format(deprecated_choice), version='8.0.0', collection_name='community.general')
+    module.deprecate(
+        'The value {0} is being deprecated and will be removed in community.general 8.0.0'.format(deprecated_choice), 
+        version='8.0.0', 
+        collection_name='community.general'
+    )
 ```
 
 ## Deprecating a behaviour
