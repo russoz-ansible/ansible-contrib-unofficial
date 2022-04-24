@@ -5,7 +5,7 @@ An non-official set of reference documentation for the Ansible module developer.
 
 ## Deprecations
 
-[](/deprecations.md)
+[/deprecations.md]
 
 ## Motivations
 
