@@ -32,8 +32,7 @@ There is no embedded support for deprecating a default value in Ansible. This is
 - The default value for this param is C(old_default) but that is being deprecated 
   and it will be replaced with C(new_default) in community.general 8.0.0.
 ```
-* Then add a code like:
-```python
+* Then add a code like: ```python
 if module.params['param1'] is None:
     param1 = old_default
     module.deprecate(
