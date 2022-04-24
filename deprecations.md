@@ -8,7 +8,7 @@ Deprecations
 Add the keywords `removed_in_version` and `removed_from_collection` to the parameter. Example:
 
 ```python
-            dist=dict(type='str', removed_in_version='4.0.0', removed_from_collection='community.general'),
+dist=dict(type='str', removed_in_version='4.0.0', removed_from_collection='community.general'),
 ```
 
 ## Deprecating a parameter alias
@@ -16,10 +16,10 @@ Add the keywords `removed_in_version` and `removed_from_collection` to the param
 Add the key word `deprecated_aliases` to the parameter. Example:
 
 ```python
-            update_cache=dict(
-                default="no", aliases=["update-cache"], type='bool',
-                deprecated_aliases=[dict(name='update-cache', version='5.0.0', collection_name='community.general')],
-            ),
+update_cache=dict(
+    default="no", aliases=["update-cache"], type='bool',
+    deprecated_aliases=[dict(name='update-cache', version='5.0.0', collection_name='community.general')],
+),
 ```
 
 ## Deprecating a parameter default value
@@ -27,7 +27,10 @@ Add the key word `deprecated_aliases` to the parameter. Example:
 There is no embedded support for deprecating a default value in Ansible. This is best achieved by following the steps:
 
 * Remove the default from the parameter
-* Remove the `default: value` from the documentation, replacing it with a line in the description describing the current default value and the deprecation, as in: `- The default value for this param is C(old_default) but that is being deprecated and it will be replaced with C(new_default) in community.general 8.0.0.`
+* Remove the `default: value` from the documentation, replacing it with a line in the description describing the current default value and the deprecation, as in: 
+```yaml
+- The default value for this param is C(old_default) but that is being deprecated and it will be replaced with C(new_default) in community.general 8.0.0.
+```
 * Then add a code like:
 ```python
 if module.params['param1'] is None:
