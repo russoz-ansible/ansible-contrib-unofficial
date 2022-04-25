@@ -1,6 +1,8 @@
 Deprecations
 ============
 
+Given the standing policies for backwards compatibility, any change on existing elements of Ansible (core or a collection) must go through a deprecation period. Different elements in Ansible have distinct strategies for being deprecated. This document tries to consolidate that, so it can be consulted as a handy reference on the topic.
+
 ## Deprecating a module
 
 Deprecating modules is clearly and concisely documented in the official Ansible documentation:
