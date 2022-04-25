@@ -53,7 +53,7 @@ Similarly to the deprecation of the default value above, there is no embedded me
   ```python
   if module.params['param1'] == deprecated_choice:
       module.deprecate(
-          'The value {0} is being deprecated'.format(deprecated_choice), 
+          'The value {0} for "param" is being deprecated'.format(deprecated_choice), 
           version='8.0.0', 
           collection_name='community.general'
       )
@@ -92,4 +92,16 @@ Let's make a small variation on the example above and say that now, when `x >= 4
       old_behaviour_when_x_gt_400=dict(type='bool', default=True),
   )
   ```
-  Don't forget to add that parameter and its description to the documentaion block of the module.
+  Don't forget to add that parameter and its description to the documentation block of the module.
+* Add a deprecation warning, similar to the previous, but indicating the switch:
+  ```python
+  if module.params['x'] >= 400:
+      module.deprecate(
+          'The module behaviour when x >= 400 is being deprecated.'
+          'To start using the new behaviour and suppress this warning, set the parameter '
+          '"old_behaviour_when_x_gt_400: false".', 
+          version='8.0.0', 
+          collection_name='community.general'
+      )
+  ```
+* After the deprecation version of the behaviour is reached (8.0.0 in the example), then proceed deprecating the `old_behaviour_when_x_gt_400` parameter for further down the road. This way, users of the module will have time to remove that extra parameter from their playbooks.
