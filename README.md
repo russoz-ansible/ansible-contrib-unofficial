@@ -1,8 +1,10 @@
-Ansible Developer References
-============================
+Ansible Contributor Unofficial Guide
+====================================
 
-An non-official set of reference documentation for the Ansible module developer.
+An unofficial documentation set for the Ansible module contributor.
 
+* [Writing a Module](/mod-writing.md)
+* [Testing a Module](/mod-testing.md)
 * [Submitting a Pull Request](/submitting-pr.md)
 * [Deprecations](/deprecations.md)
 
