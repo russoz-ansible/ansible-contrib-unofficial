@@ -65,7 +65,7 @@ Deprecating a behaviour can be slightly trickier because many times the change i
 
 ### Removing a behaviour triggered by module parameter or parameter value
 
-If the old behaviour were tied to some parameter, we could deprecate that parameter or its value and that behaviour would not be triggered again, quite similarly to the strategy of the previous section (Deprecating a parameter choice value).
+If the old behaviour were tied to some parameter, we could deprecate that parameter or its value and that behaviour would not be triggered again, quite similarly to the strategy of the previous section ([Deprecating a parameter choice value](https://github.com/russoz-ansible/ansible-developer-references/blob/main/deprecations.md#deprecating-a-parameter-choice-value)).
 
 Say an `int` parameter `x` used to accept any value in the range 0-500, but the behaviour of the module when the value is in the 400-500 range will no longer be accepted. We could deprecate it with:
 
@@ -104,4 +104,4 @@ Let's make a small variation on the example above and say that now, when `x >= 4
           collection_name='community.general'
       )
   ```
-* After the deprecation version of the behaviour is reached (8.0.0 in the example), then proceed deprecating the `old_behaviour_when_x_gt_400` parameter for further down the road. This way, users of the module will have time to remove that extra parameter from their playbooks.
+* After the deprecation version of the behaviour is reached (8.0.0 in the example), then proceed [deprecating the parameter](https://github.com/russoz-ansible/ansible-developer-references/blob/main/deprecations.md#deprecating-a-parameter) `old_behaviour_when_x_gt_400` for a later version. This way, users of the module will have time to remove that extra parameter from their playbooks.
