@@ -3,13 +3,20 @@ Deprecations
 
 ## Deprecating a module
 
+Deprecating modules is clearly and concisely documented in the official Ansible documentation:
+
+* [Deprecating modules and plugins in the Ansible main repository](https://docs.ansible.com/ansible/latest/dev_guide/module_lifecycle.html#deprecating-modules-and-plugins-in-the-ansible-main-repository)
+* [Deprecating modules and plugins in a collection](https://docs.ansible.com/ansible/latest/dev_guide/module_lifecycle.html#deprecating-modules-and-plugins-in-a-collection)
+
 ## Deprecating a parameter
 
-Add the keywords `removed_in_version` and `removed_from_collection` to the parameter. Example:
+Add the attributes `removed_in_version` and `removed_from_collection` to the parameter. Example:
 
 ```python
 dist=dict(type='str', removed_in_version='4.0.0', removed_from_collection='community.general'),
 ```
+
+Refer to [Ansible Module Architecture > AnsibleModule > Argument spec](https://docs.ansible.com/ansible/latest/dev_guide/developing_program_flow_modules.html#argument-spec) for further details on these attributes.
 
 ## Deprecating a parameter alias
 
@@ -21,6 +28,8 @@ update_cache=dict(
     deprecated_aliases=[dict(name='update-cache', version='5.0.0', collection_name='community.general')],
 ),
 ```
+
+Refer to [Ansible Module Architecture > AnsibleModule > Argument spec](https://docs.ansible.com/ansible/latest/dev_guide/developing_program_flow_modules.html#argument-spec) for further details on this attribute.
 
 ## Deprecating a parameter default value
 
