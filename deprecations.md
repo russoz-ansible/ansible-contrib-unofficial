@@ -47,7 +47,7 @@ There is no embedded support for deprecating a default value in Ansible. This is
 * Remove the `default: old_default` from the documentation, replacing it with a line in the description describing the current default value and the deprecation, as in: 
   ```yaml
   - The default value for this param is C(old_default) but that is being deprecated 
-  and it will be replaced with C(new_default) in community.general 8.0.0.
+    and it will be replaced with C(new_default) in community.general 8.0.0.
   ```
 * Then add a code like:
   ```python
