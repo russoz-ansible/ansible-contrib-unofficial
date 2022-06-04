@@ -75,6 +75,10 @@ Similarly to the deprecation of the default value above, there is no embedded me
           collection_name='community.general'
       )
   ```
+* Make sure to add a note to the parameter description in the documentation stating that the choice has been deprecated, as in: 
+  ```yaml
+    - State C(get) is deprecated and will be removed in community.general 5.0.0. Please use the module M(community.general.xfconf_info) instead.
+  ```
 
 ## Deprecating a behaviour
 
