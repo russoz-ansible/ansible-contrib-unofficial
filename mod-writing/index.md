@@ -7,11 +7,7 @@ In the community.general collection we have introduced ModuleHelper - it
 started as a streamlined way to write Ansible modules, but it became something
 more.
 
-## ModuleHelper
-
-### StateModuleHelper
-
-### CmdModuleHelper & CmdStateModuleHelper
+## [ModuleHelper](module-helper.md)
 
 ## DependencyCtxMgr
 
