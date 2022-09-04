@@ -41,7 +41,7 @@ Refer to [Ansible Module Architecture > AnsibleModule > Argument spec](https://d
 
 ## Deprecating a parameter default value
 
-There is no embedded support for deprecating a default value in Ansible. This recipe applies for both when replacing the default value and when completely removing it. Obvious adjustments must be made in the deprecation message in the latter case.
+There is no embedded support for deprecating a default value in Ansible. This recipe applies for both when replacing the default value and when completely removing it, but adjustments must be made in the deprecation message for the latter case.
 
 Use the following steps:
 
