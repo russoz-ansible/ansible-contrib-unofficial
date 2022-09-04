@@ -48,15 +48,17 @@ Use the following steps:
 * Remove the default from the parameter
 * Remove the `default: old_default` attribute from the documentation, replacing it with a line in the `description` describing the current default value and the deprecation, as in:
   ```yaml
-  - The default value for this param is C(old_default) but that is being deprecated
-    and it will be replaced with C(new_default) in community.general 8.0.0.
+  description:
+    - >
+      The default value for this param is C(old_default) but that is being deprecated
+      and it will be replaced with C(new_default) in community.general 8.0.0.
   ```
 * Then add a code like:
   ```python
   if module.params['param1'] is None:
       param1 = old_default
       module.deprecate(
-          'The default value {0} is being deprecated and it will be replaced by {1}'.format(
+          'The default value {0} for parameter param1 is being deprecated and it will be replaced by {1}'.format(
               old_default, new_default
           ),
           version='8.0.0',
