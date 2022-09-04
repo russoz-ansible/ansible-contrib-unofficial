@@ -41,12 +41,14 @@ Refer to [Ansible Module Architecture > AnsibleModule > Argument spec](https://d
 
 ## Deprecating a parameter default value
 
-There is no embedded support for deprecating a default value in Ansible. This is best achieved by following the steps:
+There is no embedded support for deprecating a default value in Ansible. This recipe applies for both when replacing the default value and when completely removing it. Obvious adjustments must be made in the deprecation message in the latter case.
+
+Use the following steps:
 
 * Remove the default from the parameter
-* Remove the `default: old_default` from the documentation, replacing it with a line in the description describing the current default value and the deprecation, as in: 
+* Remove the `default: old_default` from the documentation, replacing it with a line in the description describing the current default value and the deprecation, as in:
   ```yaml
-  - The default value for this param is C(old_default) but that is being deprecated 
+  - The default value for this param is C(old_default) but that is being deprecated
     and it will be replaced with C(new_default) in community.general 8.0.0.
   ```
 * Then add a code like:
@@ -57,10 +59,15 @@ There is no embedded support for deprecating a default value in Ansible. This is
           'The default value {0} is being deprecated and it will be replaced by {1}'.format(
               old_default, new_default
           ),
-          version='8.0.0', 
+          version='8.0.0',
           collection_name='community.general'
       )
   ```
+
+When the deprecation version is released:
+* If replacing the default value, reinstate the default attribute on the parameter with the new value.
+* Update the documentation accordingly, by adding the new default or removing the comment about default value when removing it.
+* Remove that `if` block above entirely.
 
 ## Deprecating a parameter choice value
 
@@ -70,19 +77,19 @@ Similarly to the deprecation of the default value above, there is no embedded me
   ```python
   if module.params['param1'] == deprecated_choice:
       module.deprecate(
-          'The value {0} for "param" is being deprecated'.format(deprecated_choice), 
-          version='8.0.0', 
+          'The value {0} for "param" is being deprecated'.format(deprecated_choice),
+          version='8.0.0',
           collection_name='community.general'
       )
   ```
-* Make sure to add a note to the parameter description in the documentation stating that the choice has been deprecated, as in: 
+* Make sure to add a note to the parameter description in the documentation stating that the choice has been deprecated, as in:
   ```yaml
     - State C(get) is deprecated and will be removed in community.general 5.0.0. Please use the module M(community.general.xfconf_info) instead.
   ```
 
 ## Deprecating a behaviour
 
-Deprecating a behaviour can be slightly trickier because many times the change in the behaviour is not directly linked to a parameter or its value. That means that the module user will have no mechanism to acknowledge the deprecation of the old behaviour and choose the new one. 
+Deprecating a behaviour can be slightly trickier because many times the change in the behaviour is not directly linked to a parameter or its value. That means that the module user will have no mechanism to acknowledge the deprecation of the old behaviour and choose the new one.
 
 ### Removing a behaviour triggered by module parameter or parameter value
 
@@ -93,8 +100,8 @@ Say an `int` parameter `x` used to accept any value in the range 0-500, but the 
 ```python
 if module.params['x'] >= 400:
     module.deprecate(
-        'Parameter "x" values greater than or equal to 400 are deprecated', 
-        version='8.0.0', 
+        'Parameter "x" values greater than or equal to 400 are deprecated',
+        version='8.0.0',
         collection_name='community.general'
     )
 ```
@@ -120,8 +127,8 @@ Let's make a small variation on the example above and say that now, when `x >= 4
       module.deprecate(
           'The module behaviour when x >= 400 is being deprecated.'
           'To start using the new behaviour and suppress this warning, set the parameter '
-          '"old_behaviour_when_x_gt_400: false".', 
-          version='8.0.0', 
+          '"old_behaviour_when_x_gt_400: false".',
+          version='8.0.0',
           collection_name='community.general'
       )
   ```
