@@ -61,6 +61,10 @@ if __name__ == '__main__':
   See more in the [VarDict](var-dict.md) documentation.
 * Other features described in more details in their own documentation.
 
+### Examples
+
+* [community.general.xfconf_info](https://github.com/ansible-collections/community.general/blob/main/plugins/modules/system/xfconf_info.py)
+
 ## StateModuleHelper
 
 Many modules control their actions using a `state` parameter. ModuleHelper provides the class
@@ -129,6 +133,10 @@ class MyStateModule(StateModuleHelper):
     def operation_edit(self):
         # ...
 ```
+
+### Examples
+
+* [community.general.jira](https://github.com/ansible-collections/community.general/blob/main/plugins/modules/web_infrastructure/jira.py)
 
 ## CmdModuleHelper & CmdStateModuleHelper
 
