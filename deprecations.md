@@ -24,7 +24,7 @@ Use the following steps:
   Refer to [Ansible Module Architecture > AnsibleModule > Argument spec](https://docs.ansible.com/ansible/latest/dev_guide/developing_program_flow_modules.html#argument-spec) for further details on these attributes.
 
 * Add a line to the `description` such as:
-  > This parameter has been deprecated and will be removed in community.general 15.0.0.
+  > This parameter has been deprecated and will be removed in community.general 4.0.0.
 
 ## Deprecating a parameter alias
 
@@ -45,7 +45,7 @@ Use the following steps:
   Refer to [Ansible Module Architecture > AnsibleModule > Argument spec](https://docs.ansible.com/ansible/latest/dev_guide/developing_program_flow_modules.html#argument-spec) for further details on this attribute.
 
 * Add a line to the `description` such as:
-  > The alias `blah` has been deprecated and will be removed in community.general 15.0.0.
+  > The alias `update-cache` has been deprecated and will be removed in community.general 5.0.0.
 
 ## Deprecating a parameter default value
 
