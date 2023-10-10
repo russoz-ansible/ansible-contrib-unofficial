@@ -12,32 +12,40 @@ Deprecating modules is clearly and concisely documented in the official Ansible 
 
 ## Deprecating a parameter
 
-Add the attributes `removed_in_version` and `removed_from_collection` to the parameter. Example:
+Use the following steps:
 
-```python
-argument_specs=dict(
-    # ...
-    dist=dict(type='str', removed_in_version='4.0.0', removed_from_collection='community.general'),
-)
-```
+* Add the attributes `removed_in_version` and `removed_from_collection` to the parameter. Example:
+  ```python
+  argument_specs=dict(
+      # ...
+      dist=dict(type='str', removed_in_version='4.0.0', removed_from_collection='community.general'),
+  )
+  ```
+  Refer to [Ansible Module Architecture > AnsibleModule > Argument spec](https://docs.ansible.com/ansible/latest/dev_guide/developing_program_flow_modules.html#argument-spec) for further details on these attributes.
 
-Refer to [Ansible Module Architecture > AnsibleModule > Argument spec](https://docs.ansible.com/ansible/latest/dev_guide/developing_program_flow_modules.html#argument-spec) for further details on these attributes.
+* Add a line to the `description` such as:
+  > This parameter has been deprecated and will be removed in community.general 15.0.0.
 
 ## Deprecating a parameter alias
 
-Add the key word `deprecated_aliases` to the parameter. Example:
+Use the following steps:
 
-```python
-argument_specs=dict(
-    # ...
-    update_cache=dict(
-        default="no", aliases=["update-cache"], type='bool',
-        deprecated_aliases=[dict(name='update-cache', version='5.0.0', collection_name='community.general')],
-    ),
-)
-```
+* Add the key word `deprecated_aliases` to the parameter. Example:
+  
+  ```python
+  argument_specs=dict(
+      # ...
+      update_cache=dict(
+          default="no", aliases=["update-cache"], type='bool',
+          deprecated_aliases=[dict(name='update-cache', version='5.0.0', collection_name='community.general')],
+      ),
+  )
+  ```
+  
+  Refer to [Ansible Module Architecture > AnsibleModule > Argument spec](https://docs.ansible.com/ansible/latest/dev_guide/developing_program_flow_modules.html#argument-spec) for further details on this attribute.
 
-Refer to [Ansible Module Architecture > AnsibleModule > Argument spec](https://docs.ansible.com/ansible/latest/dev_guide/developing_program_flow_modules.html#argument-spec) for further details on this attribute.
+* Add a line to the `description` such as:
+  > The alias `blah` has been deprecated and will be removed in community.general 15.0.0.
 
 ## Deprecating a parameter default value
 
